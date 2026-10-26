@@ -406,26 +406,12 @@ footer ul a:hover{color:var(--gold)}
 .offer-note{font-size:.82rem;background:var(--gold-soft);color:#8A3A06;padding:10px 14px;border-radius:10px;margin-bottom:16px;display:none}
 .offer-note.show{display:block}
 
-/* CONTACT */
-.contact-sec{background:var(--sky)}
-.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
-.contact-form{box-shadow:var(--shadow)}
-.contact-form textarea{min-height:140px;resize:vertical}
-.field .err-msg{display:none;color:var(--bad);font-size:.8rem;margin-top:6px}
-.field.err .err-msg{display:block}
-.field.err textarea{border-color:var(--bad)}
+
 .hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.contact-status{margin-top:14px;font-size:.9rem;font-weight:600;min-height:1.5em}
-.contact-status.bad{color:var(--bad)}
-.contact-done{display:none;text-align:center;padding:40px 10px}
-.contact-done .tick{width:72px;height:72px;margin:0 auto 18px;border-radius:50%;background:var(--ok);display:grid;place-items:center;animation:pop .48s var(--ease)}
-.contact-done .tick svg{width:34px;height:34px;color:#fff}
-.contact-done p{font-size:1.25rem;font-weight:700}
-.contact-form.sent form{display:none}
-.contact-form.sent .contact-done{display:block}
+.form-status{margin-top:12px;font-size:.9rem;font-weight:600;color:var(--bad);min-height:1.4em}
 
 @media (max-width:1024px){
-  .hero-grid,.panel,.leak,.billing,.cta-grid,.nid,.builder,.offer,.contact-grid{grid-template-columns:1fr}
+  .hero-grid,.panel,.leak,.billing,.cta-grid,.nid,.builder,.offer{grid-template-columns:1fr}
   .pain-grid,.stats{grid-template-columns:repeat(2,1fr)}
   .features,.comp-grid,.tiers{grid-template-columns:1fr 1fr}
   .journey{display:none}
@@ -1057,7 +1043,7 @@ footer ul a:hover{color:var(--gold)}
 
       <div class="fpage active" data-s="0">
         <h3>عن شركتك</h3><p>الخطوة 1 من 3</p>
-        <div class="field"><label for="f-co">اسم الشركة *</label><input id="f-co" name="company" required></div>
+        <div class="field"><label for="f-co">اسم الشركة *</label><input id="f-co" name="company" maxlength="150" required></div>
         <div class="row2">
           <div class="field"><label for="f-sec">القطاع *</label><select id="f-sec" name="sector" required><option value="">اختر</option><option>صناعة</option><option>تجارة وتجزئة</option><option>تكنولوجيا</option><option>خدمات مالية</option><option>إنشاءات وعقارات</option><option>تعليم</option><option>صحة</option><option>أخرى</option></select></div>
           <div class="field"><label for="f-n">عدد الموظفين *</label><select id="f-n" name="employees" required><option value="">اختر</option><option>أقل من 25</option><option>25 – 100</option><option>101 – 500</option><option>501 – 2000</option><option>أكثر من 2000</option></select></div>
@@ -1078,18 +1064,18 @@ footer ul a:hover{color:var(--gold)}
             <label><input type="checkbox" name="priority" value="فئات متعددة"><span>فئات متعددة</span></label>
           </div>
         </div>
-        <div class="field"><label for="f-msg">ملاحظات إضافية</label><textarea id="f-msg" name="notes" rows="3"></textarea></div>
+        <div class="field"><label for="f-msg">ملاحظات إضافية</label><textarea id="f-msg" name="notes" rows="3" maxlength="2000"></textarea></div>
       </div>
 
       <div class="fpage" data-s="2">
         <h3>بيانات التواصل</h3><p>الخطوة 3 من 3</p>
         <div class="row2">
-          <div class="field"><label for="f-name">الاسم *</label><input id="f-name" name="name" required></div>
+          <div class="field"><label for="f-name">الاسم *</label><input id="f-name" name="name" autocomplete="name" maxlength="100" required></div>
           <div class="field"><label for="f-role">المسمى الوظيفي *</label><select id="f-role" name="role" required><option value="">اختر</option><option>مدير / مسؤول موارد بشرية</option><option>صاحب الشركة / شريك</option><option>رئيس تنفيذي / مدير عام</option><option>مدير مالي</option><option>رئيس قسم</option><option>أخرى</option></select></div>
         </div>
         <div class="row2">
-          <div class="field"><label for="f-ph">رقم الهاتف *</label><input id="f-ph" name="phone" type="tel" dir="ltr" required></div>
-          <div class="field"><label for="f-em">البريد الإلكتروني للعمل *</label><input id="f-em" name="email" type="email" dir="ltr" required></div>
+          <div class="field"><label for="f-ph">رقم الهاتف *</label><input id="f-ph" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" placeholder="01xxxxxxxxx" required></div>
+          <div class="field"><label for="f-em">البريد الإلكتروني للعمل *</label><input id="f-em" name="email" type="email" autocomplete="email" dir="ltr" maxlength="150" required></div>
         </div>
       </div>
 
@@ -1101,38 +1087,16 @@ footer ul a:hover{color:var(--gold)}
         </div>
       </div>
 
+      <div class="hp" aria-hidden="true"><label for="f-web">اترك هذا الحقل فارغاً</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="factions" id="factions">
         <button type="button" class="btn btn-ghost" id="prevBtn" style="visibility:hidden;color:var(--navy)">السابق</button>
         <button type="button" class="btn btn-navy" id="nextBtn">التالي <svg><use href="#i-arrow"/></svg></button>
       </div>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
 
-<!-- 15. CONTACT -->
-<section class="contact-sec" id="contact" data-label="تواصل معنا">
-  <div class="container contact-grid">
-    <div>
-      <span class="eyebrow reveal" style="background:#fff">تواصل معنا</span>
-      <h2 class="reveal d1">عندك سؤال؟ <em>اكتب لنا</em></h2>
-      <p class="lead reveal d2">اترك اسمك ورقم موبايلك ورسالتك، وسيتصل بك أحد أعضاء فريقنا.</p>
-    </div>
-    <div class="form contact-form reveal d2" id="contactBox">
-      <form id="contactForm" novalidate>
-        <div class="field"><label for="c-name">الاسم *</label><input id="c-name" name="name" autocomplete="name" maxlength="100" required><div class="err-msg">اكتب اسمك.</div></div>
-        <div class="field"><label for="c-phone">الموبايل *</label><input id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" placeholder="01xxxxxxxxx" required><div class="err-msg">اكتب رقم موبايل صحيح.</div></div>
-        <div class="field"><label for="c-msg">الرسالة *</label><textarea id="c-msg" name="message" maxlength="2000" required></textarea><div class="err-msg">اكتب رسالتك.</div></div>
-        <div class="hp" aria-hidden="true"><label for="c-web">اترك هذا الحقل فارغاً</label><input id="c-web" name="website" tabindex="-1" autocomplete="off"></div>
-        <button type="submit" class="btn btn-navy" id="contactBtn">إرسال <svg><use href="#i-arrow"/></svg></button>
-        <div class="contact-status" id="contactStatus" role="status" aria-live="polite"></div>
-      </form>
-      <div class="contact-done" id="contactDone" role="status" aria-live="polite">
-        <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></div>
-        <p>سيتم التواصل معك.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="container">
@@ -1143,7 +1107,7 @@ footer ul a:hover{color:var(--gold)}
       </div>
       <div><h5>الحلول</h5><ul><li><a href="#direct">السداد المباشر</a></li><li><a href="#builder">تصميم الخطة</a></li><li><a href="#network">الشبكة الطبية</a></li><li><a href="#leakage">منع التسرب المالي</a></li></ul></div>
       <div><h5>الشركة</h5><ul><li><a href="#compliance">الامتثال والأمان</a></li><li><a href="#billing">الفوترة</a></li><li><a href="#faq">الأسئلة الشائعة</a></li></ul></div>
-      <div><h5>تواصل معنا</h5><ul><li><a href="#contact">أرسل لنا رسالة</a></li><li>البريد: <span data-placeholder>[يُضاف لاحقاً]</span></li><li>الهاتف: <span data-placeholder>[يُضاف لاحقاً]</span></li><li>العنوان: <span data-placeholder>[يُضاف لاحقاً]</span></li></ul></div>
+      <div><h5>تواصل معنا</h5><ul><li>البريد: <span data-placeholder>[يُضاف لاحقاً]</span></li><li>الهاتف: <span data-placeholder>[يُضاف لاحقاً]</span></li><li>العنوان: <span data-placeholder>[يُضاف لاحقاً]</span></li></ul></div>
     </div>
     <div class="fbottom"><span>© <span id="yr"></span> Corva. جميع الحقوق محفوظة.</span><span>خاضعة لرقابة الهيئة العامة للرقابة المالية</span></div>
   </div>
@@ -1157,6 +1121,9 @@ footer ul a:hover{color:var(--gold)}
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const fmt = n => Math.round(n).toLocaleString('en-US');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Supabase: المفتاح المسموح به هنا هو الـ publishable فقط. لا تضع المفتاح الـ secret في هذا الملف أبداً.
+  const SUPABASE_URL = 'https://owqxvmonveipbpfcmxqi.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4oQ8n2KKQ3_Bbc4TP2AfRg_BpOQu8Un';
   $('#yr').textContent = new Date().getFullYear();
 
   /* nav, progress, journey */
@@ -1350,49 +1317,6 @@ footer ul a:hover{color:var(--gold)}
     });
   }
 
-  /* contact form -> Supabase (messages table, insert-only via RLS) */
-  // المفتاح المسموح به هنا هو الـ publishable فقط. لا تضع المفتاح الـ secret في هذا الملف أبداً.
-  const SUPABASE_URL = 'https://owqxvmonveipbpfcmxqi.supabase.co';
-  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4oQ8n2KKQ3_Bbc4TP2AfRg_BpOQu8Un';
-  const cForm = $('#contactForm'), cBtn = $('#contactBtn'), cStatus = $('#contactStatus');
-  const cFields = {
-    name:    { el: $('#c-name'),  ok: v => v.length >= 2 },
-    phone:   { el: $('#c-phone'), ok: v => /^\+?[0-9 ]{8,20}$/.test(v) },
-    message: { el: $('#c-msg'),   ok: v => v.length >= 2 }
-  };
-  cForm.addEventListener('input', e => e.target.closest('.field')?.classList.remove('err'));
-  cForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    cStatus.className = 'contact-status'; cStatus.textContent = '';
-    const row = {}; let ok = true;
-    for (const [k, f] of Object.entries(cFields)) {
-      const v = f.el.value.trim().replace(/[\u0660-\u0669]/g, d => d.charCodeAt(0) - 0x0660);
-      const good = f.ok(v); f.el.closest('.field').classList.toggle('err', !good);
-      if (!good && ok) { f.el.focus(); ok = false; }
-      row[k] = v;
-    }
-    if (!ok) return;
-    if ($('#c-web').value) { $('#contactBox').classList.add('sent'); return; } // honeypot: bots
-    if (SUPABASE_PUBLISHABLE_KEY.includes('REPLACE_ME') || SUPABASE_URL.includes('YOUR-PROJECT-REF')) {
-      cStatus.className = 'contact-status bad'; cStatus.textContent = 'النموذج غير مربوط بعد بقاعدة البيانات.'; return;
-    }
-    cBtn.disabled = true; cBtn.style.opacity = '.6';
-    try {
-      const res = await fetch(SUPABASE_URL + '/rest/v1/messages', {
-        method: 'POST',
-        headers: { apikey: SUPABASE_PUBLISHABLE_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-        body: JSON.stringify(row)
-      });
-      if (!res.ok) throw new Error(res.status + ' ' + await res.text());
-      $('#contactBox').classList.add('sent');
-    } catch (err) {
-      console.error('contact form', err);
-      cStatus.className = 'contact-status bad'; cStatus.textContent = 'تعذّر الإرسال. حاول مرة أخرى بعد قليل.';
-    } finally {
-      cBtn.disabled = false; cBtn.style.opacity = '';
-    }
-  });
-
   /* billing calendar */
   const daysEl = $('#days'), out = $('#billOut');
   const mNames = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
@@ -1451,25 +1375,50 @@ footer ul a:hover{color:var(--gold)}
     next.innerHTML = i === 2 ? 'أرسل الطلب' : 'التالي <svg><use href="#i-arrow"/></svg>';
     if (i === 3) $('#factions').style.display = 'none';
   };
+  const arDigits = v => v.replace(/[\u0660-\u0669]/g, d => d.charCodeAt(0) - 0x0660);
   const valid = () => {
     let ok = true;
     $$('[required]', pages[fs]).forEach(f => {
-      const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value));
-      f.closest('.field').classList.toggle('err', bad); if (bad) ok = false;
+      if (f.type === 'tel') f.value = arDigits(f.value).trim();
+      const v = f.value.trim();
+      const bad = !v
+        || (f.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v))
+        || (f.type === 'tel' && !/^\+?[0-9 ]{8,20}$/.test(v));
+      f.closest('.field').classList.toggle('err', bad);
+      if (bad && ok) { f.focus(); ok = false; }
     });
     return ok;
   };
-  next.onclick = () => {
-    if (!valid()) return;
-    if (fs === 2) {
-      const data = Object.fromEntries(new FormData(form));
-      data.priority = new FormData(form).getAll('priority');
-      data.plan = $('#prefill').classList.contains('show') ? plan : null;
-      // TODO: اربط هنا مع نظام CRM أو البريد (fetch إلى نقطة استقبال الطلبات)
-      console.log('Corva lead', data);
-      show(3); return;
+  const status = $('#formStatus');
+  let sending = false;
+  next.onclick = async () => {
+    status.textContent = '';
+    if (sending || !valid()) return;
+    if (fs < 2) { show(fs + 1); return; }
+    if ($('#f-web').value) { show(3); return; } // honeypot: bots
+    const fd = new FormData(form), val = k => (fd.get(k) || '').trim();
+    const row = {
+      company: val('company'), sector: val('sector'), employees: val('employees'), city: val('city') || null,
+      current_insurance: val('current') || null, priorities: fd.getAll('priority'), notes: val('notes') || null,
+      contact_name: val('name'), role: val('role'), phone: val('phone'), email: val('email'),
+      offer: val('offer') || null,
+      plan: $('#prefill').classList.contains('show') ? plan : null
+    };
+    sending = true; next.disabled = prev.disabled = true; next.style.opacity = '.6';
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/leads', {
+        method: 'POST',
+        headers: { apikey: SUPABASE_PUBLISHABLE_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify(row)
+      });
+      if (!res.ok) throw new Error(res.status + ' ' + await res.text());
+      show(3);
+    } catch (err) {
+      console.error('lead form', err);
+      status.textContent = 'تعذّر إرسال الطلب. تحقق من الاتصال وحاول مرة أخرى.';
+    } finally {
+      sending = false; next.disabled = prev.disabled = false; next.style.opacity = '';
     }
-    show(fs + 1);
   };
   prev.onclick = () => show(fs - 1);
   form.addEventListener('input', e => e.target.closest('.field')?.classList.remove('err'));
